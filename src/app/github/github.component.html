@@ -1,0 +1,19 @@
+<div class="search">
+	<h1>GitHub Score</h1>
+	<form (submit)="getUsername()" #formData="ngForm">
+		<p>Input Username: <input type="text" name="username" required [(ngModel)]="username"></p>
+		<button type="submit" [disabled]="!formData.valid">Calculate my Github Score</button>
+	</form>
+</div>
+<div class="results" *ngIf="login">
+	<h2>Username: {{ login }}</h2>
+	<img id="pic" src="{{ avatar }}" height="300px">
+	<p>Public Repos: {{ public_repos }}</p>
+	<p>Followers: {{ followers }}</p>
+	<h2>Score: {{ score }}</h2>
+	<h1 class="red" *ngIf="score <= 20">Needs A Lot of Work!</h1>
+	<h1 class="red" *ngIf="score > 20 && multiplier < 50">A Decent Start!</h1>
+	<h1 class="red" *ngIf="score > 50 && multiplier < 100">Doing Good</h1>
+	<h1 class="red" *ngIf="score > 100 && multiplier < 200">Great Job</h1>
+	<h1 class="red" *ngIf="score > 200">Github MASTER</h1>
+</div>
